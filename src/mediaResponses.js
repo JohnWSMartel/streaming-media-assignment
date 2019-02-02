@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const loadFile = (request, response, source, type) => {
+  const file = path.resolve(__dirname, source);
   fs.stat(file, (err, stats) => {
     if (err) {
       if (err.code === 'ENOET') {
@@ -43,7 +44,7 @@ const loadFile = (request, response, source, type) => {
     });
 
     stream.on('error', (streamErr) => {
-      response.end(stream);
+      response.end(streamErr);
     });
 
     return stream;
@@ -55,4 +56,14 @@ const getParty = (request, response) => {
   loadFile(request, response, file, 'video/mp4');
 };
 
+const getBling = (request, response) => {
+  loadFile(request, response, '../client/bling.mp3', 'audio/mpeg');
+};
+
+const getBird = (request, response) => {
+  loadFile(request, response, '../client/bird.mp4', 'video/mp4');
+};
+
 module.exports.getParty = getParty;
+module.exports.getBling = getBling;
+module.exports.getBird = getBird;
