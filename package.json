@@ -2,7 +2,7 @@
   "name": "martel-streaming-media-assignment",
   "version": "1.0.0",
   "engines": {
-    "node": "11.7.0",
+    "node": "11.9.0",
     "npm": "6.5.0"
   },
   "description": "Use node to stream video and audio",
